@@ -15,8 +15,13 @@ terraform {
   }
 }
 
+# Configure the Microsoft Azure Provider
 provider "azurerm" {
-  features {}
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+  }
 }
 
 # Generate a random suffix for globally unique storage account name
