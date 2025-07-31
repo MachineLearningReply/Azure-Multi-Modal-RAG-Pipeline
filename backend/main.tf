@@ -39,6 +39,7 @@ resource "azurerm_resource_group" "tfstate" {
     Environment = "infrastructure"
     Purpose     = "terraform-state"
     Project     = "MLOps-CoP"
+    Owner       = "z.chen@reply.de"
   }
 }
 
@@ -70,6 +71,7 @@ resource "azurerm_storage_account" "tfstate" {
     Environment = "infrastructure"
     Purpose     = "terraform-state"
     Project     = "MLOps-CoP"
+    Owner       = "z.chen@reply.de"
   }
 }
 
