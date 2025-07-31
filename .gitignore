@@ -4,7 +4,7 @@
 *.tfstate.backup
 
 # Terraform variable files with sensitive data
-terraform.tfvars
+# terraform.tfvars
 *.auto.tfvars
 
 # Terraform plans
