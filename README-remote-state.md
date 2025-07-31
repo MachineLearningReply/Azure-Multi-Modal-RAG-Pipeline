@@ -25,6 +25,7 @@ New team members just need to:
 ```bash
 git clone <repository>
 cd Azure-Multi-Modal-RAG-Pipeline
+az login
 terraform init
 ```
 
