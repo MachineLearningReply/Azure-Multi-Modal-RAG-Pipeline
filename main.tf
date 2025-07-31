@@ -13,14 +13,12 @@ terraform {
   # Remote state backend configuration
   # Run the backend setup first: cd backend && terraform apply
   # Then uncomment this block and migrate state: terraform init
-  /*
   backend "azurerm" {
     resource_group_name  = "mlops-tfstate-rg"
-    storage_account_name = "mlopstfstateXXXX"  # Replace XXXX with actual suffix from backend output
+    storage_account_name = "mlopstfstate9788"  # Replace XXXX with actual suffix from backend output
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
   }
-  */
 }
 
 # Configure the Microsoft Azure Provider
