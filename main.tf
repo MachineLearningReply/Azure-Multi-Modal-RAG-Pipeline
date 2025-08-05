@@ -60,7 +60,7 @@ module "storage" {
   tags = var.common_tags
 }
 
-# Call the search module
+# Call the search module (enhanced to match Bicep configuration)
 module "search" {
   source = "./modules/ai-search"
 
@@ -69,9 +69,14 @@ module "search" {
   resource_group_name = azurerm_resource_group.main.name
   location           = azurerm_resource_group.main.location
 
-  # Optional parameters
+  # Optional parameters (matching Bicep configuration)
   sku                            = var.search_sku
+  hosting_mode                   = var.search_hosting_mode
   public_network_access_enabled = var.public_network_access_enabled
+  # Below three field cannot be set when using a free sku
+  partition_count                = var.search_partition_count
+  replica_count                  = var.search_replica_count
+  semantic_search                = var.search_semantic_search
   local_authentication_enabled  = var.search_local_auth_enabled
   authentication_failure_mode   = var.search_auth_failure_mode
 

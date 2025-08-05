@@ -21,9 +21,14 @@ local_authentication_enabled     = true
 blob_versioning_enabled          = false
 blob_retention_days             = 7
 
-# Search Configuration
+# Search Configuration (enhanced to match Bicep)
 search_service_name        = "mmrag-search-service"
 search_sku                = "basic"
+search_hosting_mode       = "default"
+# Below three field cannot be set when using a free search_sku
+search_partition_count    = 1
+search_replica_count      = 1
+search_semantic_search    = "free"  # Matches Bicep semanticSearch: 'free'
 
 # Tags
 common_tags = {
