@@ -70,21 +70,8 @@ variable "search_service_name" {
   type        = string
 }
 
-variable "sku" {
-  description = "Azure Search service SKU"
-  type        = string
-  default     = "free"
-  validation {
-    condition = contains([
-      "free", "basic", "standard", "standard2", "standard3",
-      "storage_optimized_l1", "storage_optimized_l2"
-    ], var.sku)
-    error_message = "SKU must be one of: free, basic, standard, standard2, standard3, storage_optimized_l1, storage_optimized_l2."
-  }
-}
-
 variable "search_sku" {
-  description = "Azure AI Search service SKU"
+  description = "Azure AI Search service SKU (matching Bicep default: standard)"
   type        = string
   default     = "basic"
   validation {
@@ -118,6 +105,41 @@ variable "search_auth_failure_mode" {
   description = "Authentication failure mode for search service"
   type        = string
   default     = "http401WithBearerChallenge"
+}
+
+# New variables to match Bicep configuration
+variable "search_hosting_mode" {
+  description = "Hosting mode for the search service (from Bicep)"
+  type        = string
+  default     = "default"
+  
+  validation {
+    condition     = contains(["default", "highDensity"], var.search_hosting_mode)
+    error_message = "Hosting mode must be either 'default' or 'highDensity'."
+  }
+}
+
+variable "search_partition_count" {
+  description = "Number of partitions for the search service (from Bicep)"
+  type        = number
+  default     = 1
+}
+
+variable "search_replica_count" {
+  description = "Number of replicas for the search service (from Bicep)"
+  type        = number
+  default     = 1
+}
+
+variable "search_semantic_search" {
+  description = "Semantic search configuration (from Bicep: semanticSearch = 'free')"
+  type        = string
+  default     = "free"
+  
+  validation {
+    condition     = contains(["disabled", "free", "standard"], var.search_semantic_search)
+    error_message = "Semantic search must be 'disabled', 'free', or 'standard'."
+  }
 }
 
 variable "common_tags" {

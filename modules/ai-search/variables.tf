@@ -1,5 +1,5 @@
-# modules/search/variables.tf
-# Input variables for search module
+# modules/ai-search/variables.tf
+# Input variables for AI Search module - Enhanced to match Bicep configuration
 
 variable "search_service_name" {
   description = "Name of the Azure AI Search service"
@@ -17,22 +17,34 @@ variable "location" {
 }
 
 variable "sku" {
-  description = "Azure Search service SKU"
+  description = "Azure Search service SKU (passed from root)"
   type        = string
-  default     = "free"
-  validation {
-    condition = contains([
-      "free", "basic", "standard", "standard2", "standard3",
-      "storage_optimized_l1", "storage_optimized_l2"
-    ], var.sku)
-    error_message = "SKU must be one of: free, basic, standard, standard2, standard3, storage_optimized_l1, storage_optimized_l2."
-  }
+}
+
+variable "hosting_mode" {
+  description = "Hosting mode for the search service (passed from root)"
+  type        = string
 }
 
 variable "public_network_access_enabled" {
-  description = "Enable public network access"
+  description = "Enable public network access (Bicep: publicNetworkAccess)"
   type        = bool
   default     = true
+}
+
+variable "partition_count" {
+  description = "Number of partitions for the search service (passed from root)"
+  type        = number
+}
+
+variable "replica_count" {
+  description = "Number of replicas for the search service (passed from root)"
+  type        = number
+}
+
+variable "semantic_search" {
+  description = "Semantic search configuration (passed from root)"
+  type        = string
 }
 
 variable "local_authentication_enabled" {
