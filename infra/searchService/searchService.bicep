@@ -3,7 +3,7 @@ param name string
 param location string = resourceGroup().location
 
 param sku object = {
-  name: 'standard'
+  name: 'free'
 }
 
 @allowed([
@@ -23,7 +23,7 @@ param replicaCount int = 1
   'free'
   'standard'
 ])
-param semanticSearch string = 'free'
+param semanticSearch string = 'disabled'
 
 var searchIdentityProvider = {
   type: 'SystemAssigned'

@@ -135,7 +135,7 @@ module appservice 'host/appservices.bicep' = {
     webAppName: webAppName
     location: location
     linuxFxVersion: 'python|3.13'
-    sku: 'B1'
+    sku: 'F1'
     appsettings: appsettings
   }
 }
