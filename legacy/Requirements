@@ -1,0 +1,58 @@
+Requirements
+NLP (RAG and Chatbot)
+Multimodal Document Processing:
+Extract text, images, and tables from documents (e.g., PDFs).
+Chunk text for embedding.
+Preserve spatial/temporal relationships in images and tables.
+Multimodal Embeddings:
+Generate embeddings for text, images, and tables.
+Ensure alignment between visual and textual embeddings.
+Multimodal Query Handling:
+Accept text queries and uploaded images.
+Process hybrid queries (e.g., "What is this object?" + image upload).
+Enriched retrieval
+Store connections between elements (e.g. image and original caption, previous and next chunks)
+Retrieve similar elements together with their connections (e.g. if the user query is matched to a specific image, make sure that its caption is also retrieved)
+Multimodal Response Generation:
+Retrieve relevant multimodal context (text, images, tables).
+Structure responses to include textual answers and referenced media.
+App
+User Interface:
+Chat interface supporting text input and image uploads.
+Display multimodal responses (text + images/tables).
+Backend Integration:
+Connect to vector DB, embedding model, and LLM.
+Infrastructure
+Storage:
+Store uploaded documents (PDFs, images).
+Document Processing:
+OCR and layout analysis (e.g., for tables).
+Extract metadata (e.g., author, date).
+Embedding & Vector DB:
+Multimodal embedding model.
+Vector database with hybrid search (text + images).
+LLM Integration:
+Connect to a language model for response generation.
+Support API-based or local deployment.
+Orchestration:
+Manage workflows (document ingestion, query processing).
+Deployment and configurability
+Template-Based Provisioning:
+Configurable infrastructure (e.g., choice of LLM, embedding model).
+Toggle features (e.g., vision capabilities).
+Automated Pipelines:
+Event-driven ingestion (new documents → vector DB).
+Scheduled re-indexing of the vector DB.
+Monitoring & Logging:
+Track pipeline health and performance.
+Log errors and user interactions.
+Implementation Ideas and Tools
+NLP
+Multimodal Embeddings: CLIP, SigLIP, CoLPali (Hugging Face).
+Image Captioning: BLIP, OFA, or other vision-language models.
+Table Processing: Camelot, Tabula, or PaddleOCR for structured data.
+App
+Streamlit
+Infrastructure
+Azure? Databricks?
+Deployment and configurability
